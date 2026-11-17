@@ -1,0 +1,31 @@
+[project]
+name = "chr-tools"
+version = "0.1.0"
+description = "Fetch, inspect and bootstrap RouterOS CHR images offline"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+chr-bootstrap = "chr_bootstrap:main"
+chr-fetch = "chr_fetch:main"
+chr-info = "chr_info:main"
+npk-info = "npk_info:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["chr_bootstrap", "chr_fetch", "chr_info", "npk_info"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF", "PL"]
+ignore = ["PLR0913", "PLR2004"]
