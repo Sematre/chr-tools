@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Show the name, version and architecture of RouterOS .npk packages."""
 
 import argparse

@@ -14,18 +14,20 @@ e2fsprogs (`debugfs` and `e2fsck`). `chr-fetch` and `npk-info` run wherever Pyth
 
 ## Quick start
 
+Recommended project manager: [uv](https://docs.astral.sh/uv/)
+
 ```sh
 # Downloads the image and packages of a version or channel
-./chr_fetch.py stable --architecture arm64 --package container
+uv run chr-fetch stable --architecture arm64 --package container
 
 # Writes a new image with a first-boot script, device-mode settings and extra packages
-./chr_bootstrap.py --script cloud-init/hetzner.rsc \
+uv run chr-bootstrap --script cloud-init/hetzner.rsc \
   --device-mode mode=advanced --device-mode container=yes \
   --package container-7.24.5-arm64.npk chr-7.24.5-arm64.img.zip router.img
 
 # Shows the version, state, packages, device-mode, first-boot script and free space of an image
-./chr_info.py router.img
-./chr_info.py router.img --script | diff - cloud-init/hetzner.rsc
+uv run chr-info router.img
+uv run chr-info router.img --script | diff - cloud-init/hetzner.rsc
 ```
 
 Pick the first-boot script for your platform from the [list of scripts](#first-boot--cloud-init-scripts).

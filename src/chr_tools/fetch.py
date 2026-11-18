@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Download a RouterOS CHR image and extra packages from MikroTik, verified by their SHA-256 sums.
 
 Files that are already present with the published sum are kept, so running it again only

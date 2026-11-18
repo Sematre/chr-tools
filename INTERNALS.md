@@ -61,8 +61,8 @@ qcow2, VMDK or VHDX files for other platforms.
 ## Development
 
 ```sh
-pip install pytest ruff mypy
-pytest && ruff check && ruff format --check && mypy *.py tests
+uv run pytest && uv run ruff check && uv run ruff format --check && uv run mypy src tests
 ```
 
-The tests build a small CHR-like image with `mke2fs` and need no downloads.
+`uv run` installs the dev tools on first use. The tests build a small CHR-like image with `mke2fs`
+and need no downloads.

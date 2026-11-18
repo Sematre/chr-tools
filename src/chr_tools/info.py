@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Show what a RouterOS CHR image contains: version, packages, device-mode and first-boot script."""
 
 import argparse
@@ -16,7 +15,7 @@ from dataclasses import asdict, dataclass
 from datetime import datetime
 from pathlib import Path
 
-from npk_info import parse_package
+from chr_tools.npk import parse_package
 
 SYSTEM = "/var/pdb/system/image"  # an installed package is its .npk at /var/pdb/NAME/image
 STORE = "/rw/store"  # created by the first boot
@@ -210,7 +209,7 @@ def main(argv: list[str] | None = None) -> None:
     if args.script:
         if script is None:
             sys.exit(f"{parser.prog}: {args.image} has no first-boot script")
-        # Unchanged for files and pipes, so that it can go back into chr_bootstrap.py --script.
+        # Unchanged for files and pipes, so that it can go back into chr-bootstrap --script.
         if sys.stdout.isatty():
             print(printable(script), end="")
         else:

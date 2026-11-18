@@ -5,8 +5,8 @@ from pathlib import Path
 
 import pytest
 
-from chr_bootstrap import bootstrap
-from chr_info import (
+from chr_tools.bootstrap import bootstrap
+from chr_tools.info import (
     Image,
     decode_device_mode,
     describe,
@@ -15,7 +15,7 @@ from chr_info import (
     printable,
     tool,
 )
-from npk_info import parse_package
+from chr_tools.npk import parse_package
 
 
 def npk(

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Prepare a never-booted RouterOS CHR image offline.
 
 Installs a first-boot script, device-mode settings and extra packages. The input is never changed,
@@ -13,7 +12,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from chr_info import (
+from chr_tools.info import (
     AUTORUN,
     MODES,
     PROPERTIES,
@@ -25,7 +24,7 @@ from chr_info import (
     encode_device_mode,
     tool,
 )
-from npk_info import parse_package, read_package
+from chr_tools.npk import parse_package, read_package
 
 FILE_MODE, DIRECTORY_MODE = 0o100644, 0o040755
 
