@@ -30,7 +30,7 @@ uv run chr-info router.img
 uv run chr-info router.img --script | diff - cloud-init/hetzner.rsc
 
 # Shows the name, version and architecture of packages
-uv run chr-npk container-7.24.5-arm64.npk
+uv run npk-info container-7.24.5-arm64.npk
 ```
 
 Pick the first-boot script for your platform from the [list of scripts](#first-boot--cloud-init-scripts).
