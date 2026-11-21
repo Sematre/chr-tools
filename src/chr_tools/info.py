@@ -158,6 +158,13 @@ class Image:
         names = [line.split("/")[5] for line in self.query(f"ls -p {path}").splitlines() if line]
         return sorted(name for name in names if name not in (".", ".."))
 
+    def check(self) -> None:
+        fsck = subprocess.run(
+            [tool("e2fsck"), "-fn", self.device], check=False, capture_output=True, text=True
+        )
+        if fsck.returncode:
+            raise RuntimeError(f"e2fsck found errors after writing:\n{fsck.stdout}")
+
 
 @dataclass(frozen=True)
 class ImageInfo:

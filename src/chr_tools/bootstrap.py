@@ -7,7 +7,6 @@ and the same inputs always produce a byte-identical output. Honors SOURCE_DATE_E
 import argparse
 import os
 import re
-import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -22,7 +21,6 @@ from chr_tools.info import (
     Image,
     copy_raw,
     encode_device_mode,
-    tool,
 )
 from chr_tools.npk import parse_package, read_package
 
@@ -117,11 +115,7 @@ def verify(image: Image, root: Path, paths: list[str], time: int) -> None:
             raise RuntimeError(
                 "this e2fsprogs ignores E2FSPROGS_FAKE_TIME, the image is not reproducible"
             )
-    fsck = subprocess.run(
-        [tool("e2fsck"), "-fn", image.device], check=False, capture_output=True, text=True
-    )
-    if fsck.returncode:
-        raise RuntimeError(f"e2fsck found errors after writing:\n{fsck.stdout}")
+    image.check()
 
 
 def bootstrap(
